@@ -31,5 +31,12 @@ public class Bibliografia {
 	public String[] requeridos ;
 
 	public String[] opcionales ;
+	
+	
+	public Bibliografia()
+	{
+		
+	}
+	
 
 }

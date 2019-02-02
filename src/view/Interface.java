@@ -64,15 +64,6 @@ public class Interface {
 
 	}
 
-	private static void printMenuCargar()
-	{
-		System.out.println("-- Que fuente de datos desea cargar?");
-		System.out.println("-- 1. Small");
-		System.out.println("-- 2. Medium");
-		System.out.println("-- 3. Large");
-		System.out.println("-- Ingrese el numero de la fuente a cargar y presione <Enter> para confirmar: (e.g., 1)");
-	}
-
 
 
 }

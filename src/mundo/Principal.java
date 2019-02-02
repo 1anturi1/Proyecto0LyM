@@ -44,11 +44,11 @@ public class Principal {
 	public int cantProceedings ;
 	public int cantTechreport ;
 	public int cantUnpublished;
-	
+
 	public int erroresPorID ;
-	
-	
-	
+
+
+
 	public Principal(){		
 		this.cantArticle = 0;
 		this.cantBook = 0;
@@ -64,9 +64,9 @@ public class Principal {
 		this.cantProceedings = 0;
 		this.cantTechreport = 0;
 		this.cantUnpublished = 0;	
-		
+
 		this.erroresPorID = 0 ;
-		
+
 
 	}
 
@@ -78,40 +78,52 @@ public class Principal {
 
 		BufferedReader br = new BufferedReader(new FileReader(file)); 
 
-		String st; 
+		String st = br.readLine(); 
 		
-		while ((st = br.readLine()) != null) 
+		String biblio = "" ;
+		
+
+		while (st != null) 
 		{
-					
+			
+			
+
 			System.out.println(st); 
-			
-			
+
+
 			if(st.startsWith("@"))
 			{
 				String array[] = st.split("\\{") ;
 				String tipo = array[0].substring(1) ;
-				
+
 				if (array.length < 2 ){
 					erroresPorID++ ;
 				}
+
+				contarTipoBiblio(tipo);		
 				
-				contarTipoBiblio(tipo);
-				
-				
-			}		
+			}	
 			
+			biblio = biblio + st ;
+			
+			st = br.readLine();
 		}
 
 		imprimirCantidadesTipo();
-		
+
 		imprimirErrores();
+		System.out.println(biblio);
+		
+ 		String bloques[]=biblio.split("@") ;
+		
+		
 
 	}
 
 
 	public void contarTipoBiblio(String pTipo)
 	{
-	
+
 		switch (pTipo)
 		{
 		case ARTICLE:
@@ -156,11 +168,11 @@ public class Principal {
 		case UNPUBLISHED:
 			cantUnpublished++;
 			break ;
-		
+
 		}
-	
+
 	}
-	
+
 	public void imprimirCantidadesTipo()
 	{
 		System.out.println(this.ARTICLE + ":  " + cantArticle);
@@ -177,16 +189,16 @@ public class Principal {
 		System.out.println(this.PROCEEDINGS + ":  " + cantProceedings);
 		System.out.println(this.TECHREPORT+ ":  " + cantTechreport);
 		System.out.println(this.UNPUBLISHED+ ":  " + cantUnpublished);
-	
-	
+
+
 	}
-	
+
 	public void imprimirErrores()
 	{
 		System.out.println("Bibliografias sin ID: " + erroresPorID);
-		
-		
-		
+
+
+
 	}
 
 
