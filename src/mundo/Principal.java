@@ -29,7 +29,21 @@ public class Principal {
 	public final static String TECHREPORT = "techreport" ;
 	public final static String UNPUBLISHED = "unpublished" ;
 
-
+	public Article art;
+	public Book book;
+	public Booklet booklet;
+	public Conference conference;
+	public InBook inbook;
+	public InCollection incollection;
+	public InProceedings inproceedings;
+	public Manual manual;
+	public MastersThesis masterthesis;
+	public Misc misc;
+	public PhdThesis phd;
+	public Proceedings proceedings;
+	public TechReport techrep;
+	public Unpublished unpublished;
+	
 	public int cantArticle ;
 	public int cantBook ;
 	public int cantBooklet ;
@@ -65,8 +79,22 @@ public class Principal {
 		this.cantTechreport = 0;
 		this.cantUnpublished = 0;	
 
+		this.art = new Article();
+		this.book = new Book();
+		this.booklet = new Booklet();
+		this.conference = new Conference();
+		this.inbook = new InBook();
+		this.incollection = new InCollection();
+		this.inproceedings = new InProceedings();
+		this.manual = new Manual();
+		this.masterthesis = new MastersThesis();
+		this.misc = new Misc();
+		this.phd = new PhdThesis();
+		this.proceedings = new Proceedings();
+		this.techrep = new TechReport();
+		this.unpublished = new Unpublished();
+		
 		this.erroresPorID = 0 ;
-
 
 	}
 
@@ -88,7 +116,7 @@ public class Principal {
 			
 			
 
-			System.out.println(st); 
+			//System.out.println(st); 
 
 
 			if(st.startsWith("@"))
@@ -112,10 +140,76 @@ public class Principal {
 		imprimirCantidadesTipo();
 
 		imprimirErrores();
-		System.out.println(biblio);
+		//System.out.println(biblio);
 		
  		String bloques[]=biblio.split("@") ;
 		
+ 		
+ 		for (int i = 1; i <= bloques.length; i++) 
+ 		{
+ 			String array[] = bloques[i].split("\\{") ;
+			String tipo = array[0] ;
+ 			switch (tipo) 
+ 			{
+ 			case ARTICLE:
+ 				art.contarNumeroErroresRequeridos(bloques[i]);
+ 				art.numeroDeCorchetes(bloques[i]);
+ 				break;
+ 			case BOOK:
+ 				book.contarNumeroErroresRequeridos(bloques[i]);
+ 				book.numeroDeCorchetes(bloques[i]);
+ 				break;
+ 			case BOOKLET:
+ 				booklet.contarNumeroErroresRequeridos(bloques[i]);
+ 				booklet.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case CONFERENCE:
+ 				conference.contarNumeroErroresRequeridos(bloques[i]);
+ 				conference.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case INBOOK:
+ 				inbook.contarNumeroErroresRequeridos(bloques[i]);
+ 				inbook.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case INCOLLECTION:
+ 				incollection.contarNumeroErroresRequeridos(bloques[i]);
+ 				incollection.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case INPROCEEDINGS:
+ 				inproceedings.contarNumeroErroresRequeridos(bloques[i]);
+ 				inproceedings.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case MANUAL:
+ 				manual.contarNumeroErroresRequeridos(bloques[i]);
+ 				manual.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case MASTERSTHESIS:
+ 				masterthesis.contarNumeroErroresRequeridos(bloques[i]);
+ 				masterthesis.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case MISC:
+ 				misc.contarNumeroErroresRequeridos(bloques[i]);
+ 				misc.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case PHDTHESIS:
+ 				phd.contarNumeroErroresRequeridos(bloques[i]);
+ 				phd.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case PROCEEDINGS:
+ 				proceedings.contarNumeroErroresRequeridos(bloques[i]);
+ 				proceedings.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case TECHREPORT:
+ 				techrep.contarNumeroErroresRequeridos(bloques[i]);
+ 				techrep.numeroDeCorchetes(bloques[i]);
+ 				break ;
+ 			case UNPUBLISHED:
+ 				unpublished.contarNumeroErroresRequeridos(bloques[i]);
+ 				unpublished.numeroDeCorchetes(bloques[i]);
+ 				break ;
+
+ 			}
+		}
 		
 
 	}
@@ -172,6 +266,7 @@ public class Principal {
 		}
 
 	}
+	
 
 	public void imprimirCantidadesTipo()
 	{
